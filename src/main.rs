@@ -78,7 +78,7 @@ fn write_cached_exchange_rate(exchange_rate: Arc<Mutex<Vec<Info>>>) {
 }
 
 async fn fetch_info_from_web(exchange_rate: Arc<Mutex<Vec<Info>>>) -> Result<(), reqwest::Error> {
-    let current_list = vec!["EUR", "JPY", "GBP", "USD", "TWD", "AUD", "KRW", "HKD", "RUB"];
+    let current_list = vec!["USD", "HKD", "JPY", "ARS", "TRY", "RUB", "EUR", "GBP", "TWD", "KRW", "AUD"];
     let re_str_list: Vec<String> = current_list.iter().map(
         |current_name| format!(r#"(\d+\.\d+)</a> <a href="/{}__huobiduihuan/" title=".*?">(.*?)<"#, current_name)
     ).collect();
