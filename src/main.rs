@@ -92,7 +92,7 @@ async fn fetch_info_from_web(exchange_rate: Arc<Mutex<Vec<Info>>>) -> Result<(),
         .timeout(time::Duration::from_secs(10))
         .default_headers(headers)
         .build()?;
-    let resp_html_str: String = client.get("https://huobiduihuan.51240.com/").send().await?.text().await?;
+    let resp_html_str: String = client.get("https://huobiduihuan.bmcx.com/").send().await?.text().await?;
     let mut new_exchange_rate: Vec<Info> = Vec::new();
     for re_str in re_str_list {
         let re = Regex::new(&re_str).unwrap();
