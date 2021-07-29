@@ -109,12 +109,13 @@ async fn fetch_info_from_web(exchange_rate: Arc<Mutex<Vec<Info>>>) -> Result<(),
 
 fn calc(money: f64, exchange_rate: Arc<Mutex<Vec<Info>>>) {
     let data = exchange_rate.lock().unwrap();
-    if (*data).len() == 0 {
+    if (*data).is_empty() {
         return;
     }
     for info in &*data {
         let exchange_money = money / info.rate;
-        println!("{} {} = {} 人民币 (CNY)", money, info.current_name, exchange_money);
+        let exchange_money2 = money * info.rate;
+        println!("{} {} = {} 人民币 (CNY) ---- {} 人民币 (CNY) = {} {}", money, info.current_name, exchange_money, money, exchange_money2, info.current_name);
     }
     print!("\n\n");
 }
